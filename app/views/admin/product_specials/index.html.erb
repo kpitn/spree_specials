@@ -1,0 +1,36 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Images"} %>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li id="new_product_link">
+      <%= button_link_to t("new_special"), new_admin_product_special_url(@product), { :icon => 'add'} %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+
+<table class="index">
+  <tr>
+    <th>Type</th>
+    <th>Montant (HT)</th>
+    <th>Date de début</th>
+    <th>Date de fin</th>
+    <th>Actions</th>
+  </tr>
+  <tbody>
+  <% @product.master.specials.each do |special| %>
+      <tr id="<%= dom_id special %>">
+        <td><%= special.type %></td>
+        <td><%= number_to_currency(special.amount) %></td>
+        <td><%= l(special.start_date) if (special.start_date) %></td>
+        <td><%= l(special.end_date) if (special.end_date) %></td>
+        <td><%= link_to_with_icon('edit', t("edit"), edit_admin_product_special_url(@product,special)) %> &nbsp;
+        <%= link_to_delete(special,:url => admin_product_special_url(@product,special)) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

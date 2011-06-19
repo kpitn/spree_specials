@@ -1,0 +1,12 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'formtastic.css' %>
+<% end %>
+
+<%= f.inputs do %>
+    <%= f.input :type, :as => :select, :collection => [ ["Promotion","Special::Promo"],["Vente Flash","Special::FlashSale"],["Soldes","Special::Sale"] ] %>
+    <%= f.input :amount %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+<% end %>
+
+
