@@ -14,11 +14,11 @@
 
 <table class="index">
   <tr>
-    <th>Type</th>
-    <th>Montant (HT)</th>
-    <th>Date de début</th>
-    <th>Date de fin</th>
-    <th>Actions</th>
+    <th><%= t("type") %></th>
+    <th><%= t("amount") %></th>
+    <th><%= t("start_date") %></th>
+    <th><%= t("end_date") %></th>
+    <th><%= t("action") %></th>
   </tr>
   <tbody>
   <% @product.master.specials.each do |special| %>
