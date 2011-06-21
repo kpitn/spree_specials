@@ -1,4 +1,5 @@
 class Special < ActiveRecord::Base
+
   belongs_to :variant
 
   scope :current, :conditions => [" (start_date < ? and end_date > ?) OR (start_date < ? and end_date IS NULL) ", Time.now, Time.now, Time.now]
