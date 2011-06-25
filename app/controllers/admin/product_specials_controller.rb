@@ -18,6 +18,7 @@ class Admin::ProductSpecialsController < Admin::BaseController
     @special = Special.new(params[:special])
     @special.variant = @product.master
     @special.type = params[:special][:type]
+    @special.type = Special::TYPES.first if @special.type.blank?
     if @special.save
       redirect_to admin_product_specials_url(@product)
     else

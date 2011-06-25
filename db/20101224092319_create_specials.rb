@@ -3,7 +3,7 @@ class CreateSpecials < ActiveRecord::Migration
     create_table :specials do |t|
       t.datetime :start_date
       t.datetime :end_date
-      t.decimal :amount, :precision => 8, :scale => 2, :default => 0.0, :null => false
+      t.decimal :amount, :precision => 8, :scale => 2, :default => 0.0
       t.integer :author_id
       t.integer :variant_id
       t.string :type
