@@ -1,0 +1,29 @@
+<h1><%= t("specials") %></h1>
+
+<table class="index">
+  <tr>
+    <th><%= t("sku") %></th>
+    <th><%= t("name") %></th>
+    <th><%= t("type") %></th>
+    <th><%= t("amount") %></th>
+    <th><%= t("discount") %></th>
+    <th><%= t("start_date") %></th>
+    <th><%= t("end_date") %></th>
+    <th><%= t("action") %></th>
+  </tr>
+  <tbody>
+  <% @specials.each do |special| %>
+      <tr id="<%= dom_id special %>">
+        <td><%= special.variant.product.sku %></td>
+        <td><%= special.variant.product.name %></td>
+        <td><%= t special.type %></td>
+        <td><%= number_to_currency(special.amount) %></td>
+        <td><%= special.discount %></td>
+        <td><%= l(special.start_date) if (special.start_date) %></td>
+        <td><%= l(special.end_date) if (special.end_date) %></td>
+        <td><%= link_to_with_icon('edit', t("edit"), edit_admin_product_special_url(special.variant.product,special)) %> &nbsp;
+        <%= link_to_delete(special,:url => admin_product_special_url(special.variant.product,special)) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

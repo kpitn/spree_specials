@@ -9,6 +9,9 @@ class Admin::ProductSpecialsController < Admin::BaseController
   def new
     @special = Special.new()
     @special.start_date = Time.now
+
+    @special.end_date = @special.start_date + 7.days
+    @special.end_date = @special.end_date.change(:hour => 23, :min => 59)
   end
 
   def create

@@ -1,3 +1,16 @@
 fr-FR:
+  activerecord:
+    attributes:
+      special:
+        amount: Montant HT (€)
+        discount: Promotion (%)
+        start_date: Date de début
+        end_date: Date de fin
+
   specials: Promotions
   new_special: Nouvelle Promotion
+  discount: Réduction (%)
+  Special::Promo: Promotion
+  Special::FlashSale: Vente Flash
+  Special::Sale: Soldes
+
