@@ -46,6 +46,8 @@ Spree::BaseHelper.module_eval do
             html +="<span class=\"regular_price\">#{product.price}</span>"
             html +="<span class=\"special_price\">#{product.promo.amount}</span>"
           end
+        else
+          html +="<span class=\"selling_price\">#{product.price}</span>"
         end
       end
     end
