@@ -1,5 +1,26 @@
 Spree::BaseHelper.module_eval do
 
+
+  def top_special_price(product)
+    if product.flash_sale
+      if product.flash_sale.discount
+        discount = product.flash_sale.discount
+      else
+        discount = product.price * 100 / product.flash_sale.amount
+      end
+    else
+      if product.promo
+        if product.promo.discount
+          discount = product.promo.discount
+        else
+          discount =  product.price * 100 / product.promo.amount
+        end
+      end
+    end
+    html ="<span class=\"pourcentage\">#{product.flash_sale.discount} %</span>" if discount
+  end
+
+
   def special_price(product)
     html = ""
     if product.sale
