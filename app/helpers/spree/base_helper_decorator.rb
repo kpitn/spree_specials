@@ -6,18 +6,18 @@ Spree::BaseHelper.module_eval do
       if product.flash_sale.discount
         discount = product.flash_sale.discount
       else
-        discount = product.price - (product.flash_sale.amount  * 100 / product.price)
+        discount =   (product.price - product.flash_sale.amount) * 100 / product.price
       end
     else
       if product.promo
         if product.promo.discount
           discount = product.promo.discount
         else
-          discount =  product.price - (product.promo.amount  * 100 / product.price)
+          discount =  (product.price - product.promo.amount) * 100 / product.price
         end
       end
     end
-    "<span class=\"pourcentage\">#{discount} %</span>".html_safe if discount
+    "<span class=\"pourcentage\">#{discount.to_i} %</span>".html_safe if discount
   end
 
 
