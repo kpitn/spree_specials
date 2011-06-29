@@ -6,14 +6,14 @@ Spree::BaseHelper.module_eval do
       if product.flash_sale.discount
         discount = product.flash_sale.discount
       else
-        discount = product.price * 100 / product.flash_sale.amount
+        discount = product.price - (product.flash_sale.amount  * 100 / product.price)
       end
     else
       if product.promo
         if product.promo.discount
           discount = product.promo.discount
         else
-          discount =  product.price * 100 / product.promo.amount
+          discount =  product.price - (product.promo.amount  * 100 / product.price)
         end
       end
     end
