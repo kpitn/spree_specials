@@ -17,7 +17,7 @@ Spree::BaseHelper.module_eval do
         end
       end
     end
-    html ="<span class=\"pourcentage\">#{product.flash_sale.discount} %</span>" if discount
+    "<span class=\"pourcentage\">#{product.flash_sale.discount} %</span>".html_safe if discount
   end
 
 
