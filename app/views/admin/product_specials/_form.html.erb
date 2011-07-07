@@ -5,7 +5,7 @@
 <%= f.inputs do %>
     <%= f.input :type, :as => :select, :collection => Special::TYPES.map{|t| [t(t),t]} %>
     <%= f.input :amount %>
-    <%= f.input :discount %>
+    <%#= f.input :discount %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
 <% end %>
