@@ -1,13 +1,39 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag 'formtastic.css' %>
+
+    <%= javascript_tag("
+    $(document).ready(function() {
+      $('#special_amount').keyup(function() {
+        regular_price = $('#special_regular_price').val();
+        special_price = $('#special_amount').val();
+        discount = (regular_price - special_price) * 100 / regular_price;
+        $('#special_discount').val(Math.round(discount));
+      });
+      $('#special_discount').keyup(function() {
+        regular_price = $('#special_regular_price').val();
+        special_discount = $('#special_discount').val();
+        console.log(regular_price ,special_discount);
+        special_price = regular_price - (regular_price * special_discount / 100) ;
+        $('#special_amount').val(Math.round(special_price));
+      });
+    });
+    ") %>
+
 <% end %>
 
 <%= f.inputs do %>
-    <%= f.input :type, :as => :select, :collection => Special::TYPES.map{|t| [t(t),t]} %>
-    <%= f.input :amount %>
-    <%#= f.input :discount %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+  <li>
+    <%= f.label :regular_price, t("regular_price") %>
+    <%= f.text_field :regular_price, :value => @product.price, :disabled => true %>
+  </li>
+  <%= f.input :type, :as => :select, :collection => Special::TYPES.map{|t| [t(t),t]} %>
+  <%= f.input :amount, :input_html=> {:autocomplete => 'off'} %>
+  <li>
+    <%= f.label :discount, t("discount") %>
+    <%= f.text_field :discount, :value => "" %>
+  </li>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
 <% end %>
 
 

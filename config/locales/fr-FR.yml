@@ -2,7 +2,7 @@ fr-FR:
   activerecord:
     attributes:
       special:
-        amount: Montant HT (€)
+        amount: Montant
         discount: Promotion (%)
         start_date: Date de début
         end_date: Date de fin
@@ -13,4 +13,5 @@ fr-FR:
   Special::Promo: Promotion
   Special::FlashSale: Vente Flash
   Special::Sale: Soldes
+  regular_price: Prix normal
 
