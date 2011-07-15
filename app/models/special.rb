@@ -7,7 +7,7 @@ class Special < ActiveRecord::Base
 
   TYPES = ["Special::Promo","Special::FlashSale","Special::Sale"]
 
-  DISCOUNT_SHOW = ["nothing","purcent","amount"]
+  DISCOUNT_SHOW = ["nothing","purcent","amount","two_price"]
 #
 #  after_save :set_variant_special_price
 #  after_create :set_variant_special_price
