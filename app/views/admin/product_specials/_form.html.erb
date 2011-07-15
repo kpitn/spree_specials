@@ -30,8 +30,9 @@
   <%= f.input :amount, :input_html=> {:autocomplete => 'off'} %>
   <li>
     <%= f.label :discount, t("discount") %>
-    <%= f.text_field :discount, :value => "" %>
+    <%= f.text_field :discount %>
   </li>
+  <%= f.input :discount_show, :as => :select, :collection => Special::DISCOUNT_SHOW.map{|t| [t(t),t]} %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
 <% end %>

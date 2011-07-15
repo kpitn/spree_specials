@@ -10,6 +10,7 @@ class Admin::ProductSpecialsController < Admin::BaseController
     @special = Special.new()
     @special.start_date = Time.now
     @special.type = Special::Promo
+    @special.show_discount =  Special::DISCOUNT_SHOW.first
     #@special.end_date = @special.start_date + 7.days
     #@special.end_date = @special.end_date.change(:hour => 23, :min => 59)
   end
@@ -19,6 +20,7 @@ class Admin::ProductSpecialsController < Admin::BaseController
     @special.variant = @product.master
     @special.type = params[:special][:type]
     @special.type = Special::TYPES.first if @special.type.blank?
+    @special.show_discount = Special::DISCOUNT_SHOW.first if @special.show_discount.blank?
     if @special.save
       redirect_to admin_product_specials_url(@product)
     else

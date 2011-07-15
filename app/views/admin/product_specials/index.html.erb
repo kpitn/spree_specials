@@ -19,6 +19,7 @@
     <th><%= t("discount") %></th>
     <th><%= t("start_date") %></th>
     <th><%= t("end_date") %></th>
+    <th>Afficher</th>
     <th><%= t("action") %></th>
   </tr>
   <tbody>
@@ -29,6 +30,7 @@
         <td><%= special.discount %></td>
         <td><%= l(special.start_date) if (special.start_date) %></td>
         <td><%= l(special.end_date) if (special.end_date) %></td>
+        <td><%= t special.discount_show %></td>
         <td><%= link_to_with_icon('edit', t("edit"), edit_admin_product_special_url(@product,special)) %> &nbsp;
         <%= link_to_delete(special,:url => admin_product_special_url(@product,special)) %></td>
       </tr>
