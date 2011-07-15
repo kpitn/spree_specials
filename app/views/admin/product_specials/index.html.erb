@@ -23,6 +23,7 @@
     <th><%= t("action") %></th>
   </tr>
   <tbody>
+
   <% @product.master.specials.each do |special| %>
       <tr id="<%= dom_id special %>">
         <td><%= t special.type %></td>
@@ -30,7 +31,7 @@
         <td><%= special.discount %></td>
         <td><%= l(special.start_date) if (special.start_date) %></td>
         <td><%= l(special.end_date) if (special.end_date) %></td>
-        <td><%= t special.discount_show %></td>
+        <td><%= t special.discount_show if special.discount_show %></td>
         <td><%= link_to_with_icon('edit', t("edit"), edit_admin_product_special_url(@product,special)) %> &nbsp;
         <%= link_to_delete(special,:url => admin_product_special_url(@product,special)) %></td>
       </tr>
