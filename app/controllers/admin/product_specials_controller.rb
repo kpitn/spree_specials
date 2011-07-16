@@ -20,7 +20,7 @@ class Admin::ProductSpecialsController < Admin::BaseController
     @special.variant = @product.master
     @special.type = params[:special][:type]
     @special.type = Special::TYPES.first if @special.type.blank?
-    @special.discount_show = Special::DISCOUNT_SHOW.first if @special.show_discount.blank?
+    @special.discount_show = Special::DISCOUNT_SHOW.first if @special.discount_show.blank?
     if @special.save
       redirect_to admin_product_specials_url(@product)
     else
