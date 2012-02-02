@@ -1,6 +1,6 @@
-<%= render :partial => 'admin/shared/product_sub_menu' %>
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
 
-<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Images"} %>
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "ProductSpecials"} %>
 
 <div class='toolbar'>
   <ul class='actions'>
@@ -29,8 +29,8 @@
         <td><%= t special.type %></td>
         <td><%= number_to_currency(special.amount) %></td>
         <td><%= special.discount %></td>
-        <td><%= l(special.start_date) if (special.start_date) %></td>
-        <td><%= l(special.end_date) if (special.end_date) %></td>
+        <td><%= l(special.start_date, :format => :long) if (special.start_date) %></td>
+        <td><%= l(special.end_date, :format => :long) if (special.end_date) %></td>
         <td><%= t special.discount_show if special.discount_show %></td>
         <td><%= link_to_with_icon('edit', t("edit"), edit_admin_product_special_url(@product,special)) %> &nbsp;
         <%= link_to_delete(special,:url => admin_product_special_url(@product,special)) %></td>

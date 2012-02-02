@@ -11,9 +11,9 @@ fr-FR:
   specials: Promotions
   new_special: Nouvelle Promotion
   discount: Réduction (%)
-  Special::Promo: Promotion
-  Special::FlashSale: Vente Flash
-  Special::Sale: Soldes
+  Spree::Special::Promo: Promotion
+  Spree::Special::FlashSale: Vente Flash
+  Spree::Special::Sale: Soldes
   regular_price: Prix normal
   purcent: Pourcentage
   amount: Montant

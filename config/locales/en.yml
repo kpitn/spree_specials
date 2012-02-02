@@ -1,3 +1,22 @@
 en:
+  activerecord:
+    attributes:
+      special:
+        amount: Amount
+        discount: Discount (%)
+        start_date: Start Date
+        end_date: End Date
+        discount_show: Show discount
+
   specials: Specials
-  special: New Special
+  new_special: New Special
+  discount: Discount (%)
+  Spree::Special::Promo: discount
+  Spree::Special::FlashSale: Flash Sale
+  Spree::Special::Sale: Sale
+  regular_price: Regular Price
+  purcent: Purcentage
+  amount: Amount
+  nothing: Nothing
+  two_price: Two price
+

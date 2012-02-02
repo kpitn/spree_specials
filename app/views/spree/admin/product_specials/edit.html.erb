@@ -1,6 +1,6 @@
-<%= render :partial => 'admin/shared/product_sub_menu' %>
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
 
-<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Images"} %>
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "ProductSpecials"} %>
 
 <%= semantic_form_for([:admin,@product,@special], :url => admin_product_special_url(@product,@special) , :as => :special)  do |f| %>
 

@@ -1,7 +1,6 @@
 require 'spree_core'
-require 'spree_special_hooks'
 
-module SpreeSpecial
+module SpreeSpecials
   class Engine < Rails::Engine
 
     config.autoload_paths += %W(#{config.root}/lib)
@@ -11,9 +10,9 @@ module SpreeSpecial
         Rails.env.production? ? require(c) : load(c)
       end
 
-
-
-
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/**/*.rb")) do |c|
+        Rails.application.config.cache_classes ? require(c) : load(c)
+      end
     end
 
     config.to_prepare &method(:activate).to_proc

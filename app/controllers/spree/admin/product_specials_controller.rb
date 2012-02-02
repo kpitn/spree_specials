@@ -1,4 +1,4 @@
-class Admin::ProductSpecialsController < Admin::BaseController
+class Spree::Admin::ProductSpecialsController < Spree::Admin::BaseController
 
   before_filter :load_product
 
@@ -7,20 +7,19 @@ class Admin::ProductSpecialsController < Admin::BaseController
   end
 
   def new
-    @special = Special.new()
-    @special.start_date = Time.now
-    @special.type = Special::Promo
-    @special.discount_show =  Special::DISCOUNT_SHOW.first
+    @special = Spree::Special.new()
+    @special.price = @product.price
+
     #@special.end_date = @special.start_date + 7.days
     #@special.end_date = @special.end_date.change(:hour => 23, :min => 59)
   end
 
   def create
-    @special = Special.new(params[:special])
+    @special = Spree::Special.new(params[:special])
     @special.variant = @product.master
     @special.type = params[:special][:type]
-    @special.type = Special::TYPES.first if @special.type.blank?
-    @special.discount_show = Special::DISCOUNT_SHOW.first if @special.discount_show.blank?
+    @special.type = Spree::Special::TYPES.first if @special.type.blank?
+    @special.discount_show = Spree::Special::DISCOUNT_SHOW.first if @special.discount_show.blank?
     if @special.save
       redirect_to admin_product_specials_url(@product)
     else
@@ -29,7 +28,7 @@ class Admin::ProductSpecialsController < Admin::BaseController
   end
 
   def edit
-    @special = Special.find(params[:id])
+    @special = Spree::Special.find(params[:id])
   end
 
   def update
@@ -42,7 +41,7 @@ class Admin::ProductSpecialsController < Admin::BaseController
   end
 
   def destroy
-    @special = Special.find(params[:id])
+    @special = Spree::Special.find(params[:id])
     @special.destroy
     respond_to do |format|
       format.js  { render_js_for_destroy }
@@ -51,7 +50,7 @@ class Admin::ProductSpecialsController < Admin::BaseController
 
   private
     def load_product
-      @product = Product.find_by_param(params[:product_id])
+      @product = Spree::Product.find_by_param(params[:product_id])
     end
 
 end

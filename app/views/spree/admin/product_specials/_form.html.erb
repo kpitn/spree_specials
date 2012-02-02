@@ -4,13 +4,13 @@
     <%= javascript_tag("
     $(document).ready(function() {
       $('#special_amount').keyup(function() {
-        regular_price = $('#special_regular_price').val();
+        regular_price = $('#special_price').val();
         special_price = $('#special_amount').val();
         discount = (regular_price - special_price) * 100 / regular_price;
         $('#special_discount').val(Math.round(discount));
       });
       $('#special_discount').keyup(function() {
-        regular_price = $('#special_regular_price').val();
+        regular_price = $('#special_price').val();
         special_discount = $('#special_discount').val();
         console.log(regular_price ,special_discount);
         special_price = regular_price - (regular_price * special_discount / 100) ;
@@ -22,17 +22,12 @@
 <% end %>
 
 <%= f.inputs do %>
-  <li>
-    <%= f.label :regular_price, t("regular_price") %>
-    <%= f.text_field :regular_price, :value => @product.price, :disabled => true %>
-  </li>
-  <%= f.input :type, :as => :select, :collection => Special::TYPES.map{|t| [t(t),t]} %>
+
+  <%= f.input :price %>
+  <%= f.input :type, :as => :select, :collection => Spree::Special::TYPES.map{|t| [t(t),t]} %>
   <%= f.input :amount, :input_html=> {:autocomplete => 'off'} %>
-  <li>
-    <%= f.label :discount, t("discount") %>
-    <%= f.text_field :discount %>
-  </li>
-  <%= f.input :discount_show, :as => :select, :collection => Special::DISCOUNT_SHOW.map{|t| [t(t),t]} %>
+  <%= f.input :discount %>
+  <%= f.input :discount_show, :as => :select, :collection => Spree::Special::DISCOUNT_SHOW.map{|t| [t(t),t]} %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
 <% end %>

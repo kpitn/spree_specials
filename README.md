@@ -4,10 +4,16 @@ SpreeSpecial
 Introduction goes here.
 
 
-Example
+Installation
 =======
 
-Example goes here.
+Add to Gemfile:
+    gem 'spree_specials', ">= 1.0.0"
+
+Run:
+    bundle install
+    rails g spree_specials:install
+    rake db:migrate
 
 
-Copyright (c) 2011 [name of extension creator], released under the New BSD License
+Copyright (c) 2011 Kpitn, released under the New BSD License
